@@ -28,6 +28,7 @@ public class CommentController {
     @PostMapping("/postId/{postid}")
     public ResponseEntity<Map<String, Object>> createComment(@RequestBody Comment comment, @PathVariable int postid) {
         // Fetch the Post by postid
+        System.set.println(1000);
         Post post = postRepo.findById(postid).orElseThrow(() -> 
             new ResourceNotFoundException("Post not found with ID: " + postid)
         );
@@ -50,6 +51,7 @@ public class CommentController {
         response.put("id", createdComment.getId());
         response.put("content", createdComment.getContent());
         response.put("post", fullPost);
+
 
         // Return the response with a 201 status (created)
         return new ResponseEntity<>(response, HttpStatus.CREATED);
